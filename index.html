@@ -6,61 +6,100 @@
   <title>Spring 2025 Plankton & Environmental Patterns</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
-    body { padding-top: 3rem; padding-bottom: 3rem; }
+    body { padding-top: 4rem; padding-bottom: 4rem; }
     .section { margin-bottom: 4rem; }
     .caption { font-size: 0.9rem; color: #555; margin-top: 0.5rem; }
-    img { border: 1px solid #ccc; border-radius: 5px; }
+    img { border: 1px solid #ccc; border-radius: 5px; margin-bottom: 1rem; }
+    .card { margin-bottom: 2rem; }
   </style>
 </head>
-<body class="container">
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Plankton Analysis</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="#methods">Methods</a></li>
+        <li class="nav-item"><a class="nav-link" href="#rda">RDA</a></li>
+        <li class="nav-item"><a class="nav-link" href="#stacked">Stacked</a></li>
+        <li class="nav-item"><a class="nav-link" href="#ratio">Ratio</a></li>
+        <li class="nav-item"><a class="nav-link" href="#nutrients">Nutrients</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
   <h1 class="text-center mb-5">Spring 2025: Environmental Drivers of Plankton Community Variation</h1>
 
-  <section class="section">
+  <section id="methods" class="section">
     <h2>Methods: PCA of Environmental Structuring</h2>
     <p>To explore how environmental conditions structure plankton communities, a Principal Component Analysis (PCA) was performed using four abiotic variables: salinity, dissolved oxygen (DO), nitrate, and silicate. These variables were measured at 0.3 meters depth across six weeks at two sites: Eld Inlet and Boston Harbor.</p>
     <p>Plankton community data were collected at each site and week using abundance codes for each species (0 = Absent, 1 = Present, 2 = Common, 3 = Blooming). These data were transformed into a species matrix, while the environmental variables were standardized (z-scores) and used to perform PCA. The first two principal components (PC1 and PC2) were extracted and visualized to create a biplot showing the distribution of site-week samples in relation to environmental gradients.</p>
     <p>Each point in the biplot represents a unique Station × Week sample, with colors indicating station identity and text labels indicating sampling week. Arrows represent the direction and strength of correlation between environmental variables and the principal components.</p>
   </section>
 
-  <section class="section">
+  <section id="rda" class="section">
     <h2>RDA-Style PCA Biplots</h2>
-    <div class="mb-4">
+    <div class="card p-3">
       <img src="output(4).png" class="img-fluid" alt="Station-based RDA Plot">
-      <div class="caption">RDA biplot with samples colored by site and labeled by week. Shows how environmental gradients (salinity, nitrate, DO, and silicate) structure plankton community composition.</div>
+      <div class="caption">Samples colored by site and labeled by week. Environmental gradients: salinity, nitrate, DO, silicate.</div>
     </div>
-    <div>
+    <div class="card p-3">
       <img src="output(5).png" class="img-fluid" alt="Temperature-based RDA Plot">
-      <div class="caption">Same RDA biplot as above, but with sample points colored by temperature (°C) to show the influence of thermal variation across time and space.</div>
+      <div class="caption">Same as above but colored by temperature (°C), highlighting thermal influence.</div>
     </div>
   </section>
 
-  <section class="section">
+  <section id="stacked" class="section">
     <h2>Dino:Diatom Composition (Stacked)</h2>
-    <div class="mb-4">
+    <div class="card p-3">
       <img src="output(1).png" class="img-fluid" alt="Eld Inlet Dino:Diatom Percent">
-      <div class="caption">Eld Inlet: Percent-based composition of dinoflagellates vs. diatoms over time based on their summed abundance codes. Highlights seasonal succession.</div>
+      <div class="caption">Eld Inlet: Dinoflagellates vs. diatoms (% abundance, summed codes).</div>
     </div>
-    <div>
+    <div class="card p-3">
       <img src="output.png" class="img-fluid" alt="Boston Harbor Dino:Diatom Percent">
-      <div class="caption">Boston Harbor: Percent-based composition of dinoflagellates vs. diatoms over time. Useful for comparing bloom dynamics across sites.</div>
+      <div class="caption">Boston Harbor: Composition comparison across bloom weeks.</div>
     </div>
   </section>
 
-  <section class="section">
+  <section id="ratio" class="section">
     <h2>Dino:Diatom Ratio (Raw)</h2>
-    <img src="output(3).png" class="img-fluid" alt="Dino:Diatom Ratio Plot">
-    <div class="caption">The Dino:Diatom ratio was calculated by dividing total dinoflagellate scores by total diatom scores at each site-week. Ratios >1 indicate dinoflagellate dominance; <1 indicates diatom dominance. This ratio is based on summed abundance codes rather than proportions, enabling direct comparison of bloom magnitude and dominance shifts.</div>
+    <div class="card p-3">
+      <img src="output(3).png" class="img-fluid" alt="Dino:Diatom Ratio Plot">
+      <div class="caption">Ratio >1: dinoflagellate dominance; &lt;1: diatom dominance. Based on summed abundance codes.</div>
+    </div>
   </section>
 
-  <section class="section">
+  <section id="nutrients" class="section">
     <h2>💡 Nutrient Requirements of Diatoms vs. Dinoflagellates</h2>
-    <p>Phytoplankton growth and community composition are tightly linked to nutrient availability. The classical Redfield Ratio (16:1 ratio of nitrate to phosphate) is often used to describe the optimal nutrient balance for marine phytoplankton. However, <strong>diatoms</strong> also require <strong>silicate</strong> to build their siliceous frustules (shells), making their nutrient needs more complex than those of <strong>dinoflagellates</strong>, which do not require silicate.</p>
-    <p>In this study:</p>
-    <ul>
-      <li><strong>Diatoms</strong> were associated with high levels of both nitrate and silicate. When silicate was limiting, diatom blooms were suppressed even in the presence of ample nitrate.</li>
-      <li><strong>Dinoflagellates</strong>, requiring only nitrate, were observed to dominate under conditions where nitrate was available but silicate was depleted, suggesting competitive release.</li>
-    </ul>
-    <p>This nutrient dynamic provides a mechanistic explanation for the temporal and spatial patterns of plankton dominance observed in the RDA and ratio plots.</p>
+    <div class="accordion" id="nutrientAccordion">
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingOne">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            Nutrient Dynamics & Redfield Ratio
+          </button>
+        </h2>
+        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#nutrientAccordion">
+          <div class="accordion-body">
+            <p>The Redfield Ratio (16:1 ratio of nitrate to phosphate) is a foundational concept in phytoplankton ecology. Diatoms also require <strong>silicate</strong> to build their frustules, whereas dinoflagellates do not. As a result:</p>
+            <ul>
+              <li><strong>Diatoms</strong> thrive when both nitrate and silicate are high. If silicate is limiting, they cannot bloom regardless of nitrate availability.</li>
+              <li><strong>Dinoflagellates</strong> need only nitrate, allowing them to dominate when silicate is low but nitrate is sufficient.</li>
+            </ul>
+            <p>These nutrient-driven patterns help explain the shifts in community composition seen in the PCA and ratio figures above.</p>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+
