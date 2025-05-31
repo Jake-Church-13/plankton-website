@@ -2,63 +2,65 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Spring 2025 Plankton & Environmental Patterns</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
-    body { font-family: sans-serif; line-height: 1.6; padding: 20px; max-width: 900px; margin: auto; }
-    h1, h2, h3 { color: #003366; }
-    img { max-width: 100%; margin: 20px 0; border: 1px solid #ccc; }
-    section { margin-bottom: 40px; }
-    .caption { font-size: 0.9em; color: #555; margin-bottom: 10px; }
+    body { padding-top: 3rem; padding-bottom: 3rem; }
+    .section { margin-bottom: 4rem; }
+    .caption { font-size: 0.9rem; color: #555; margin-top: 0.5rem; }
+    img { border: 1px solid #ccc; border-radius: 5px; }
   </style>
 </head>
-<body>
-  <h1>Spring 2025: Environmental Drivers of Plankton Community Variation</h1>
+<body class="container">
+  <h1 class="text-center mb-5">Spring 2025: Environmental Drivers of Plankton Community Variation</h1>
 
-  <section>
+  <section class="section">
     <h2>Methods: PCA of Environmental Structuring</h2>
     <p>To explore how environmental conditions structure plankton communities, a Principal Component Analysis (PCA) was performed using four abiotic variables: salinity, dissolved oxygen (DO), nitrate, and silicate. These variables were measured at 0.3 meters depth across six weeks at two sites: Eld Inlet and Boston Harbor.</p>
     <p>Plankton community data were collected at each site and week using abundance codes for each species (0 = Absent, 1 = Present, 2 = Common, 3 = Blooming). These data were transformed into a species matrix, while the environmental variables were standardized (z-scores) and used to perform PCA. The first two principal components (PC1 and PC2) were extracted and visualized to create a biplot showing the distribution of site-week samples in relation to environmental gradients.</p>
     <p>Each point in the biplot represents a unique Station × Week sample, with colors indicating station identity and text labels indicating sampling week. Arrows represent the direction and strength of correlation between environmental variables and the principal components.</p>
   </section>
 
-  <section>
+  <section class="section">
     <h2>RDA-Style PCA Biplots</h2>
-    <div class="caption">Station-colored PCA showing separation of site-week samples and directionality of abiotic drivers.</div>
-    <img src="output.png" alt="PCA Biplot by Station">
-    <div class="caption">PCA biplot with points colored by in situ temperature (°C) to illustrate thermal gradients.</div>
-    <img src="output(1).png" alt="PCA Biplot Colored by Temperature">
+    <div class="mb-4">
+      <img src="output(4).png" class="img-fluid" alt="Station-based RDA Plot">
+      <div class="caption">RDA biplot with samples colored by site and labeled by week. Shows how environmental gradients (salinity, nitrate, DO, and silicate) structure plankton community composition.</div>
+    </div>
+    <div>
+      <img src="output(5).png" class="img-fluid" alt="Temperature-based RDA Plot">
+      <div class="caption">Same RDA biplot as above, but with sample points colored by temperature (°C) to show the influence of thermal variation across time and space.</div>
+    </div>
   </section>
 
-  <section>
-    <h2>Interpretation of Results</h2>
-    <p>The PCA biplot reveals clear environmental differentiation between sites and sampling weeks:</p>
-    <ul>
-      <li><strong>PC1</strong> accounts for the largest proportion of variation and appears to reflect a combined gradient of salinity and nitrate. Samples scoring high along PC1 were generally associated with higher values of these variables.</li>
-      <li><strong>PC2</strong> represents secondary variation, possibly linked to differences in dissolved oxygen and silicate availability across sites and weeks.</li>
-      <li>Samples from Eld Inlet and Boston Harbor cluster differently in ordination space, suggesting distinct environmental regimes driving plankton community composition at each location.</li>
-      <li>Temporal trends are visible through week labels. For example, later-season samples (e.g., Week 8) may show divergence from earlier weeks (e.g., Week 2), likely due to seasonal shifts in environmental drivers and associated changes in phytoplankton dominance (e.g., diatoms vs. dinoflagellates).</li>
-    </ul>
-  </section>
-
-  <section>
-    <h2>Temperature Overlay</h2>
-    <p>To explore how temperature co-varies with environmental gradients, PCA results were color-mapped using in situ temperature data (°C) collected at 0.3 m depth. Although temperature was not directly included in the PCA due to high collinearity with dissolved oxygen (r = 0.82), this visualization reveals clear thermal structuring across sites and sampling weeks.</p>
-    <p>Warmer samples (red hues) tend to cluster along gradients associated with lower DO and nitrate, while cooler samples (blue hues) align with more oxygenated, nutrient-rich conditions. This supports the conclusion that temperature interacts strongly with oxygen and nutrient regimes, indirectly influencing plankton community structure.</p>
-  </section>
-
-  <section>
-    <h2>Dino:Diatom Ratio (Raw)</h2>
-    <div class="caption">Comparative Dino:Diatom abundance ratio (not a proportion) across weeks and sites.</div>
-    <img src="output(3).png" alt="Dino:Diatom Ratio Plot">
-    <p>To assess functional shifts in the phytoplankton community, a Dino:Diatom ratio was calculated by dividing the total abundance scores of dinoflagellates by those of diatoms at each site and week. These scores were based on a semi-quantitative scale (0 = Absent, 1 = Present, 2 = Common, 3 = Blooming). The resulting ratio is not a proportion but a comparative index: values >1 indicate dinoflagellate dominance, while values <1 indicate diatom dominance. This approach captures relative bloom tendencies rather than overall community composition.</p>
-  </section>
-
-  <section>
+  <section class="section">
     <h2>Dino:Diatom Composition (Stacked)</h2>
-    <div class="caption">Eld Inlet: Relative composition of diatoms and dinoflagellates over time.</div>
-    <img src="output(4).png" alt="Stacked Plot - Eld Inlet">
-    <div class="caption">Boston Harbor: Relative composition of diatoms and dinoflagellates over time.</div>
-    <img src="output(5).png" alt="Stacked Plot - Boston Harbor">
+    <div class="mb-4">
+      <img src="output(1).png" class="img-fluid" alt="Eld Inlet Dino:Diatom Percent">
+      <div class="caption">Eld Inlet: Percent-based composition of dinoflagellates vs. diatoms over time based on their summed abundance codes. Highlights seasonal succession.</div>
+    </div>
+    <div>
+      <img src="output.png" class="img-fluid" alt="Boston Harbor Dino:Diatom Percent">
+      <div class="caption">Boston Harbor: Percent-based composition of dinoflagellates vs. diatoms over time. Useful for comparing bloom dynamics across sites.</div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Dino:Diatom Ratio (Raw)</h2>
+    <img src="output(3).png" class="img-fluid" alt="Dino:Diatom Ratio Plot">
+    <div class="caption">The Dino:Diatom ratio was calculated by dividing total dinoflagellate scores by total diatom scores at each site-week. Ratios >1 indicate dinoflagellate dominance; <1 indicates diatom dominance. This ratio is based on summed abundance codes rather than proportions, enabling direct comparison of bloom magnitude and dominance shifts.</div>
+  </section>
+
+  <section class="section">
+    <h2>💡 Nutrient Requirements of Diatoms vs. Dinoflagellates</h2>
+    <p>Phytoplankton growth and community composition are tightly linked to nutrient availability. The classical Redfield Ratio (16:1 ratio of nitrate to phosphate) is often used to describe the optimal nutrient balance for marine phytoplankton. However, <strong>diatoms</strong> also require <strong>silicate</strong> to build their siliceous frustules (shells), making their nutrient needs more complex than those of <strong>dinoflagellates</strong>, which do not require silicate.</p>
+    <p>In this study:</p>
+    <ul>
+      <li><strong>Diatoms</strong> were associated with high levels of both nitrate and silicate. When silicate was limiting, diatom blooms were suppressed even in the presence of ample nitrate.</li>
+      <li><strong>Dinoflagellates</strong>, requiring only nitrate, were observed to dominate under conditions where nitrate was available but silicate was depleted, suggesting competitive release.</li>
+    </ul>
+    <p>This nutrient dynamic provides a mechanistic explanation for the temporal and spatial patterns of plankton dominance observed in the RDA and ratio plots.</p>
   </section>
 </body>
 </html>
